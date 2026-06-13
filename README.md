@@ -16,4 +16,4 @@ Machine learning framework for NIPT: mixed-effects model for fetal DNA concentra
 4. 按顺序运行 src/male_fetal/ 中的MATLAB脚本，然后运行 src/female_fetal/two_stage_rf.py
 
 ## 结果
-所有输出保存在 results/ 目录下。
+所有输出保存在 results/ 目录下
