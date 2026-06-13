@@ -1,7 +1,5 @@
-data/
 results/
 *.asv
 *.DS_Store
 __pycache__/
-*.xlsx
 *.png
