@@ -10,9 +10,7 @@ Machine learning framework for NIPT: mixed-effects model for fetal DNA concentra
 2. Python 3.8+ (numpy, pandas, scikit-learn, imbalanced-learn, xgboost, shap, scikit-bio)
 
 ## 快速开始
-1. 复制 config/config_template.m 为 config.m（MATLAB）
-2. 复制 config/config_template.py 为 config.py（Python）
-3. 按顺序运行 src/male_fetal/ 中的MATLAB脚本，然后运行 src/female_fetal/two_stage_rf.py
+分别运行 src 文件夹里的代码文件，他们彼此之间相互独立
 
 ## 结果
 所有输出保存在 results/ 目录下
