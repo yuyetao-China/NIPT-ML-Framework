@@ -115,26 +115,31 @@ MATLAB 脚本
 
 示例：
 
-matlab
+```matlab
 % 只想做 GAM 模型分析
 gam_model
 
 % 只想做混合效应模型
 mixed_effect_model
+```
 
 Python 脚本
 在终端中进入项目根目录，直接运行对应的 Python 文件。
 
-想做什么	运行这个文件
-做 PERMANOVA 检验，看男胎和女胎数据是否有显著差异	python src/female_fetal/permanova_test.py
-做双阶段随机森林异常检测（T13/T18/T21）	python src/female_fetal/two_stage_rf.py
+| 想做什么 | 运行这个文件 |
+|---------|-------------|
+| 做 PERMANOVA 检验，看男胎和女胎数据是否有显著差异 | `python src/female_fetal/permanova_test.py` |
+| 做双阶段随机森林异常检测（T13/T18/T21） | `python src/female_fetal/two_stage_rf.py` |
+
 示例：
 
-% 只想做 GAM 模型分析
-gam_model
+```bash
+# 只想跑异常检测模型
+python src/female_fetal/two_stage_rf.py
 
-% 只想做混合效应模型
-mixed_effect_model
+# 只想跑 PERMANOVA 检验
+python src/female_fetal/permanova_test.py
+```
 
 两个 Python 文件也是相互独立的，想用哪个就运行哪个。
 
