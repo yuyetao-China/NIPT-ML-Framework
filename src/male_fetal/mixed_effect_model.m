@@ -15,12 +15,12 @@ lambda3 = 0.1;
 p_fail = @(t, b) 0.05 + 0.01*(t - 10) + 0.001*(b - 30);
 
 resultTable = table();
-resultTable.分组 = groups;
-resultTable.最佳时点_周 = zeros(numGroups, 1);
-resultTable.风险值 = zeros(numGroups, 1);
-resultTable.患者数 = zeros(numGroups, 1);
-resultTable.风险标准误 = zeros(numGroups, 1);
-resultTable.时点标准误 = zeros(numGroups, 1);
+resultTable.('分组') = groups;
+resultTable.('最佳时点_周') = zeros(numGroups, 1);
+resultTable.('风险值') = zeros(numGroups, 1);
+resultTable.('患者数') = zeros(numGroups, 1);
+resultTable.('风险标准误') = zeros(numGroups, 1);
+resultTable.('时点标准误') = zeros(numGroups, 1);
 
 % 为每组计算最佳时点和风险值
 for g = 1:numGroups
@@ -37,7 +37,7 @@ for g = 1:numGroups
     end
     if isempty(earliestTimes), continue; end
     t0 = median(earliestTimes);
-    resultTable.最佳时点_周(g) = t0;
+    resultTable.('最佳时点_周')(g) = t0;
     risks = [];
     for i = 1:length(patients)
         patientData = groupData(strcmp(groupData.PatientID, patients{i}), :);
@@ -51,11 +51,11 @@ for g = 1:numGroups
         end
     end
     if ~isempty(risks)
-        resultTable.风险值(g) = median(risks);
+        resultTable.('风险值')(g) = median(risks);
     else
-        resultTable.风险值(g) = NaN;
+        resultTable.('风险值')(g) = NaN;
     end
-    resultTable.患者数(g) = length(patients);
+    resultTable.('患者数')(g) = length(patients);
 end
 
 % Bootstrap估计标准误
@@ -112,8 +112,8 @@ for g = 1:numGroups
         end
     end
 end
-resultTable.风险标准误 = std(bootstrapRisks, 0, 2, 'omitnan');
-resultTable.时点标准误 = std(bootstrapTimes, 0, 2, 'omitnan');
+resultTable.('风险标准误') = std(bootstrapRisks, 0, 2, 'omitnan');
+resultTable.('时点标准误') = std(bootstrapTimes, 0, 2, 'omitnan');
 
 disp('分组、最佳NIPT时点及风险值:');
 disp(resultTable);
@@ -123,17 +123,17 @@ writetable(resultTable, fullfile(cfg.results_dir, 'MixedEffect_Results.xlsx'));
 patientIDs = unique(maleData.PatientID);
 individualResults = table();
 individualResults.PatientID = patientIDs;
-individualResults.分组 = zeros(length(patientIDs), 1);
-individualResults.最佳时点_周 = zeros(length(patientIDs), 1);
+individualResults.('分组') = zeros(length(patientIDs), 1);
+individualResults.('最佳时点_周') = zeros(length(patientIDs), 1);
 for i = 1:length(patientIDs)
     patientID = patientIDs{i};
     patientData = maleData(strcmp(maleData.PatientID, patientID), :);
-    individualResults.分组(i) = patientData.Group(1);
+    individualResults.('分组')(i) = patientData.Group(1);
     idx = find(patientData.YChromosomeConcentration >= theta, 1);
     if ~isempty(idx)
-        individualResults.最佳时点_周(i) = patientData.GestationalWeeks(idx);
+        individualResults.('最佳时点_周')(i) = patientData.GestationalWeeks(idx);
     else
-        individualResults.最佳时点_周(i) = NaN;
+        individualResults.('最佳时点_周')(i) = NaN;
     end
 end
 writetable(individualResults, fullfile(cfg.results_dir, 'Individual_BestTime.xlsx'));
@@ -142,18 +142,18 @@ disp(['每个孕妇的最佳时点已保存到: ' fullfile(cfg.results_dir, 'Ind
 % 绘图
 figure;
 subplot(2,1,1);
-bar(1:numGroups, resultTable.最佳时点_周);
+bar(1:numGroups, resultTable.('最佳时点_周'));
 hold on;
-errorbar(1:numGroups, resultTable.最佳时点_周, resultTable.时点标准误, 'k.', 'LineWidth', 1.5);
+errorbar(1:numGroups, resultTable.('最佳时点_周'), resultTable.('时点标准误'), 'k.', 'LineWidth', 1.5);
 xlabel('分组');
 ylabel('最佳NIPT时点 (周)');
 title('各分组最佳NIPT时点（含误差条）');
 set(gca, 'XTick', 1:numGroups, 'XTickLabel', groups);
 grid on;
 subplot(2,1,2);
-bar(1:numGroups, resultTable.风险值);
+bar(1:numGroups, resultTable.('风险值'));
 hold on;
-errorbar(1:numGroups, resultTable.风险值, resultTable.风险标准误, 'k.', 'LineWidth', 1.5);
+errorbar(1:numGroups, resultTable.('风险值'), resultTable.('风险标准误'), 'k.', 'LineWidth', 1.5);
 xlabel('分组');
 ylabel('风险值');
 title('各分组风险值（含误差条）');
@@ -211,7 +211,7 @@ legend('show', 'Location', 'best');
 grid on;
 set(gcf, 'Position', [100, 100, 900, 600]);
 noiseSensResults = table();
-noiseSensResults.分组 = groups;
+noiseSensResults.('分组') = groups;
 for n_idx = 1:length(noise_levels)
     noiseSensResults.(sprintf('噪声_%.3f_均值', noise_levels(n_idx))) = pass_rates(:, n_idx);
     noiseSensResults.(sprintf('噪声_%.3f_标准差', noise_levels(n_idx))) = pass_rates_std(:, n_idx);
