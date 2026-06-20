@@ -19,7 +19,7 @@ Machine learning framework for NIPT: mixed-effects model for fetal DNA concentra
 
 
 
-好的，我重新写一份完整的 `README.md`，将“数据准备”改为“数据介绍”，并针对每个独立运行的代码文件逐一介绍其功能。
+
 
 ---
 
@@ -27,7 +27,7 @@ Machine learning framework for NIPT: mixed-effects model for fetal DNA concentra
 
 基于混合效应模型和双阶段随机森林的胎儿DNA浓度预测与染色体异常检测
 
-本仓库为论文《基于混合效应模型和双阶段随机森林的胎儿DNA浓度预测与染色体异常检测》的**完整代码实现**。
+本仓库为NBU机器学习课程报告《基于混合效应模型和双阶段随机森林的胎儿DNA浓度预测与染色体异常检测》的**代码实现**。
 
 ---
 
