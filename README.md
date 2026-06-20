@@ -121,25 +121,44 @@ pip install pandas numpy matplotlib scikit-learn imbalanced-learn xgboost shap s
 
 ---
 
-## 🚀 运行说明
+🚀 运行说明
+每个代码文件均可独立运行，文件之间无依赖关系。你可以根据自己的需要，只运行某一个文件，也可以全部运行。
 
-### MATLAB 脚本
+MATLAB 脚本
+在 MATLAB 中，将当前文件夹切换到项目根目录（即包含 config.m 的文件夹），然后在命令窗口直接输入文件名运行。
 
-```matlab
-% 1. 打开 MATLAB，将当前文件夹切换到项目根目录
-% 2. 在命令窗口运行任意脚本，例如：
+想做什么	运行这个文件
+做 Spearman 相关分析和 t 检验，筛选关键变量	spearman_ttest
+做 GAM 模型拟合，看孕周和 BMI 对 Y 染色体浓度的影响	gam_model
+对 BMI 进行聚类，找最优分组数	bmi_clustering
+方案一：计算每个 BMI 分组的最佳检测时点	optimal_timing_plan1
+做三层分组（怀孕次数 + 年龄 + BMI）统计	multi_factor_grouping
+做混合效应模型拟合 + 噪声敏感性分析	mixed_effect_model
+用混合效应模型预测 Y 染色体浓度	predict_yconc
+示例：
+
+matlab
+% 只想做 GAM 模型分析
 gam_model
-```
 
-### Python 脚本
+% 只想做混合效应模型
+mixed_effect_model
 
-```bash
-# 进入项目根目录，运行核心分析脚本
+Python 脚本
+在终端中进入项目根目录，直接运行对应的 Python 文件。
+
+想做什么	运行这个文件
+做 PERMANOVA 检验，看男胎和女胎数据是否有显著差异	python src/female_fetal/permanova_test.py
+做双阶段随机森林异常检测（T13/T18/T21）	python src/female_fetal/two_stage_rf.py
+示例：
+
+bash
+# 只想跑异常检测模型
 python src/female_fetal/two_stage_rf.py
 
-# 或单独运行 PERMANOVA 检验
+# 只想跑 PERMANOVA 检验
 python src/female_fetal/permanova_test.py
-```
+两个 Python 文件也是相互独立的，想用哪个就运行哪个。
 
 ---
 
