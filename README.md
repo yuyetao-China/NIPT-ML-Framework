@@ -103,14 +103,16 @@ pip install pandas numpy matplotlib scikit-learn imbalanced-learn xgboost shap s
 MATLAB 脚本
 在 MATLAB 中，将当前文件夹切换到项目根目录（即包含 config.m 的文件夹），然后在命令窗口直接输入文件名运行。
 
-想做什么	运行这个文件
-做 Spearman 相关分析和 t 检验，筛选关键变量	spearman_ttest
-做 GAM 模型拟合，看孕周和 BMI 对 Y 染色体浓度的影响	gam_model
-对 BMI 进行聚类，找最优分组数	bmi_clustering
-方案一：计算每个 BMI 分组的最佳检测时点	optimal_timing_plan1
-做三层分组（怀孕次数 + 年龄 + BMI）统计	multi_factor_grouping
-做混合效应模型拟合 + 噪声敏感性分析	mixed_effect_model
-用混合效应模型预测 Y 染色体浓度	predict_yconc
+| 想做什么 | 运行这个文件 |
+|---------|-------------|
+| 做 Spearman 相关分析和 t 检验，筛选关键变量 | `spearman_ttest` |
+| 做 GAM 模型拟合，看孕周和 BMI 对 Y 染色体浓度的影响 | `gam_model` |
+| 对 BMI 进行聚类，找最优分组数 | `bmi_clustering` |
+| 方案一：计算每个 BMI 分组的最佳检测时点 | `optimal_timing_plan1` |
+| 做三层分组（怀孕次数 + 年龄 + BMI）统计 | `multi_factor_grouping` |
+| 做混合效应模型拟合 + 噪声敏感性分析 | `mixed_effect_model` |
+| 用混合效应模型预测 Y 染色体浓度 | `predict_yconc` |
+
 示例：
 
 matlab
