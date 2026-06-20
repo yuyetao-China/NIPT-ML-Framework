@@ -130,12 +130,15 @@ Python 脚本
 做双阶段随机森林异常检测（T13/T18/T21）	python src/female_fetal/two_stage_rf.py
 示例：
 
-bash
+```bash
 # 只想跑异常检测模型
 python src/female_fetal/two_stage_rf.py
+```
 
+```bash
 # 只想跑 PERMANOVA 检验
 python src/female_fetal/permanova_test.py
+```
 两个 Python 文件也是相互独立的，想用哪个就运行哪个。
 
 ---
