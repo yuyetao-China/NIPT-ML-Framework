@@ -101,6 +101,7 @@ pip install pandas numpy matplotlib scikit-learn imbalanced-learn xgboost shap s
 每个代码文件均可独立运行，文件之间无依赖关系。你可以根据自己的需要，只运行某一个文件，也可以全部运行。
 
 MATLAB 脚本
+
 在 MATLAB 中，将当前文件夹切换到项目根目录（即包含 config.m 的文件夹），然后在命令窗口直接输入文件名运行。
 
 | 想做什么 | 运行这个文件 |
@@ -124,6 +125,7 @@ mixed_effect_model
 ```
 
 Python 脚本
+
 在终端中进入项目根目录，直接运行对应的 Python 文件。
 
 | 想做什么 | 运行这个文件 |
